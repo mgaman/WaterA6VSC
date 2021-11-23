@@ -13,8 +13,8 @@ A6GPRS::A6GPRS(Stream &comm,unsigned cbs,unsigned maxmessagelength){
   ParseState = GETMM;
   nextLineSMS = false;
   smsmode = SMS_UNKNOWN;
-};
-A6GPRS::~A6GPRS(){};
+}
+A6GPRS::~A6GPRS(){}
 static char TempBuf[100];
 static const char *statusnames[] = {"IP INITIAL","IP START","IP CONFIG","IP IND","IP GPRSACT","IP STATUS","TCP/UDP CONNECTING","IP CLOSE","CONNECT OK"};
 enum eCIPstatus A6GPRS::getCIPstatus()

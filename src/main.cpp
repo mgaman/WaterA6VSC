@@ -183,10 +183,13 @@ void setup() {
 				Serial.println(bigbuff);
 				urlSent = HTTPGET(bigbuff);
 				Serial.println(urlSent ? F("powerup sent") : F("powerup not sent"));
-				if (SMSout)
-					phone.sendSMS(EEPROMGetIndex(DP), "Powerup");
-				if (urlSent)
+//				if (SMSout)
+//					phone.sendSMS(EEPROMGetIndex(DP), "Powerup");
+				if (urlSent) {
 					stillDown = false;
+					if (SMSout)  // only send if have gprs connection
+						phone.sendSMS(EEPROMGetIndex(DP), "Powerup");
+				}
 			} else
 				Serial.println(F("Couldn't get IP address"));
 		} else
